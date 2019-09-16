@@ -1,0 +1,26 @@
+{
+  "name": "product-backend",
+  "version": "1.0.0",
+  "description": "Application backend for product",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Product tech team",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "cors": "^2.8.5",
+    "dotenv": "^8.1.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.6.12",
+    "node-pre-gyp": "^0.13.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.0",
+    "@babel/polyfill": "^7.6.0",
+    "@babel/preset-env": "^7.6.0",
+    "@babel/register": "^7.6.0"
+  }
+}
