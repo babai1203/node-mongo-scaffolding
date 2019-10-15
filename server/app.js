@@ -1,10 +1,11 @@
 import express from 'express';
 const app = express();
-import config from './server/config/environment';
-import initializeDB from './server/config/seed';
+import config from './config/environment';
+import initializeDB from './config/seed';
 import mongoose from 'mongoose';
-const connecString = config.typeOfProd().mongo.uri;
-import registerRoutes from './server/routes';
+const connecString = config.getConstants().mongo.uri;
+import registerRoutes from './routes';
+import cors from 'cors';
 require('dotenv').config();
 
 mongoose.connect(connecString, {
@@ -18,10 +19,11 @@ mongoose.connect(connecString, {
 });
 
 //Middlware
+app.use(cors());
 app.use(express.json());
 
 registerRoutes(app);
 
-app.listen(config.all(),()=>{
-    console.log("Server is running on port " + config.all());
+app.listen(config.getPort(),()=>{
+    console.log("Server is running on port " + config.getPort());
 })

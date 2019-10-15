@@ -1,8 +1,8 @@
-/*eslint no-process-env:0*/
-
-// Development specific configuration
-// ==================================
 module.exports = {
+    //token hashing secret string
+    token: {
+        secret: 'sdasjndjnlkadnel'
+    },
     // MongoDB connection options
     mongo: {
         useMongoClient: true,

@@ -1,15 +1,14 @@
 var all = {
-    env: process.env.NODE_ENV,
+    env: process.argv[2] || 'development',
     // Server port
-    port: process.env.PORT || 9000,
+    port: process.env.PORT || 3000,
 }
 
 module.exports = {
-    all:function(){
+    getPort:function(){
        return all.port;
     },
-    typeOfProd: function(){
-        return require(`./development.js`) || {};
-        //return require(`./${process.env.NODE_ENV}.js`) || {};
+    getConstants: function(){
+        return require(`./${all.env}.js`) || {};
     }
 };
