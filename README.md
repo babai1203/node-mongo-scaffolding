@@ -1,3 +1,1 @@
-# hexagon-app
-
-Hexagon back-end (Node & MongoDB)
+Readme to be updated soon

@@ -1,24 +1,30 @@
 import jwt from 'jsonwebtoken';
+import config from '../../environment';
+import { find_users } from '../../user/controller';
 
 export function isLoggedin() {
-    return function(req,res, next){
+    return async function(req,res,next){
         const token = req.header('token');
         if(!token){
             return res.status(401).send({ message: 'Access forbidden.' });
         }
         try {
-            const user = jwt.verify(token,process.env.TOKEN_SECRET);
-            req.user = user;
-            if(user.status != 'active') {
+            let user = jwt.verify(token,config.getConstants().token.secret);
+            let query = {
+                _id: user._id
+            }
+            user = await find_users(query);
+            req.user = user[0];
+            if(req.user.status != 'active') {
                 return res.status(403).send({ message: 'Access forbidden.' });
             }
-            next()
-        } catch(err){
+            next();
+        } catch(e){
+            console.log(e);
            return res.status(400).send({ message: 'Invalid session. Please login again.' });
         }
     }
 }
-
 
 export function hasRole(role) {
     if(!role) {
@@ -26,7 +32,7 @@ export function hasRole(role) {
     }
     return function(req,res,next){
         isLoggedin();
-        if(role == req.user.role) {
+        if(role.includes(req.user.role)) {
             return next();
         } else {
             return res.status(403).send({ message: 'Access forbidden.' });

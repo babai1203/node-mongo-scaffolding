@@ -1,12 +1,12 @@
 {
-  "name": "hexagon-app",
+  "name": "pasto-app",
   "version": "1.0.0",
-  "description": "Application backend for hexagon",
-  "main": "server/app.js",
+  "description": "Application backend for pasto",
+  "main": "main_app/app.js",
   "scripts": {
-    "start": "babel-node server/app.js"
+    "start": "babel-node main_app/app.js"
   },
-  "author": "Convergytics tech team",
+  "author": "Souptik Chatterjee (souptik@pasto.in)",
   "license": "ISC",
   "dependencies": {
     "@babel/cli": "^7.6.0",
