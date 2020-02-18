@@ -1,15 +1,19 @@
 import config from '../environment';
 import { find_users, create_user } from '../user/controller';
+import { find_setting, create_setting } from '../setting/controller';
 
 export default async function initializeDB() {
     if(config.getConstants().seedDB) {
         try {
             //pre-populate admin
-            let query = {
+            let get_query = {
                 "role": "main_admin"
             };
-            let count = await find_users(query);
-            if(count == 0) {
+            let send_query = {
+                email: 1
+            }
+            let users = await find_users(get_query,send_query);
+            if(users.length == 0) {
                 let post_body = {
                     "customerID": "ADMIN",
                     "firstName": "Admin",
@@ -22,21 +26,24 @@ export default async function initializeDB() {
                 create_user(post_body);
                 console.log('Main admin added.');
             }
-            // //pre-populate settings
-            // query = {};
-            // count = find_setting(query);
-            // if(count == 0) {
-            //     let post_body = {
-            //         "subscriptionNumber": "SUB301",
-            //         "orderNumber": "ORD301",
-            //         "customerID": "C301",
-            //         "tax": 5,
-            //         "GSTIN": "29AAFCE4741E1ZP",
-            //         "latestVersion": "3.0.0"
-            //     };
-            //     create_setting(post_body);
-            //     console.log('Global constants added.');
-            // }
+            //pre-populate settings
+            get_query = {};
+            send_query = {
+                _id: 1
+            }
+            let setting = await find_setting(get_query,send_query);
+            if(!setting) {
+                let post_body = {
+                    "subscriptionNumber": "SUB301",
+                    "orderNumber": "ORD301",
+                    "customerID": "C301",
+                    "tax": 5,
+                    "GSTIN": "29AAFCE4741E1ZP",
+                    "latestVersion": "2.5.0"
+                };
+                await create_setting(post_body);
+                console.log('Global constants added.');
+            }
         } catch(e) {
             console.log(e);
         }

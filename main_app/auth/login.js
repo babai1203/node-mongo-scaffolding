@@ -5,10 +5,14 @@ import { find_users } from '../../user/controller';
 import config from '../../environment';
 
 router.post("/", async(req, res) => {
-  let query = {
+  let get_query = {
     mobile: req.body.mobile
   };
-  var user = await find_users(query);
+  let send_query = {
+    mobile: 1,
+    status: 1
+  };
+  var user = await find_users(get_query,send_query);
   if (user.length == 0) {
     return res.status(400).send({ message: 'Mobile not registered with us.' });
   } else {

@@ -10,10 +10,14 @@ export function isLoggedin() {
         }
         try {
             let user = jwt.verify(token,config.getConstants().token.secret);
-            let query = {
+            let get_query = {
                 _id: user._id
             }
-            user = await find_users(query);
+            let send_query = {
+                status: 1,
+                role: 1
+            }
+            user = await find_users(get_query,send_query);
             req.user = user[0];
             if(req.user.status != 'active') {
                 return res.status(403).send({ message: 'Access forbidden.' });
