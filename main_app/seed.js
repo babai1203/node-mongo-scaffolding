@@ -18,7 +18,7 @@ export default async function initializeDB() {
                     "customerID": "ADMIN",
                     "firstName": "Admin",
                     "mobile": "9513099000",
-                    "email": "admin@pasto.in",
+                    "email": "admin@product.in",
                     "role": "main_admin",
                     "referralCodes": [{"value":1000,"code":"ADMINISGOD","active":true},{"value":500,"code":"MOM500","active":true},{"value":100,"code":"MOM100","active":true},{"value":1000,"code":"SOUPREF","active":true},{"value":150,"code":"GREXTER","active":true},{"value":100,"code":"NSP100","active":true},{"value":150,"code":"FEEDBACK150","active":true},{"value":2020,"code":"HNY2020","active":true}],
                     "status": "active"

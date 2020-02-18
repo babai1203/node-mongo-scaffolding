@@ -3,7 +3,7 @@ import Setting from '../schemas/setting';
 
 export async function find_setting(get_query, send_query) {
     try {
-        return mongoose.connect('mongodb://localhost/pasto-setting', {
+        return mongoose.connect('mongodb://localhost/product-setting', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true
@@ -22,7 +22,7 @@ export async function find_setting(get_query, send_query) {
 
 export async function create_setting(create_query) {
     try {
-        return mongoose.connect('mongodb://localhost/pasto-setting', {
+        return mongoose.connect('mongodb://localhost/product-setting', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true
@@ -50,7 +50,7 @@ export async function create_setting(create_query) {
 
 export async function update_setting(find_query, update_query) {
     try {
-        return mongoose.connect('mongodb://localhost/pasto-setting', {
+        return mongoose.connect('mongodb://localhost/product-setting', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true
@@ -80,7 +80,7 @@ export async function update_setting(find_query, update_query) {
 
 export async function delete_setting(query) {
     try {
-        return mongoose.connect('mongodb://localhost/pasto-setting', {
+        return mongoose.connect('mongodb://localhost/product-setting', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true

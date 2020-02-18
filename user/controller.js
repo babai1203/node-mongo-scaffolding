@@ -3,7 +3,7 @@ import User from '../schemas/user';
 
 export async function find_users(get_query, send_query) {
     try {
-        return mongoose.connect('mongodb://localhost/pasto-user', {
+        return mongoose.connect('mongodb://localhost/product-user', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true
@@ -22,7 +22,7 @@ export async function find_users(get_query, send_query) {
 
 export async function create_user(create_query) {
     try {
-        return mongoose.connect('mongodb://localhost/pasto-user', {
+        return mongoose.connect('mongodb://localhost/product-user', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true
@@ -59,7 +59,7 @@ export async function create_user(create_query) {
 
 export async function update_user(find_query, update_query) {
     try {
-        return mongoose.connect('mongodb://localhost/pasto-user', {
+        return mongoose.connect('mongodb://localhost/product-user', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true
@@ -95,7 +95,7 @@ export async function update_user(find_query, update_query) {
 
 export async function delete_user(query) {
     try {
-        return mongoose.connect('mongodb://localhost/pasto-user', {
+        return mongoose.connect('mongodb://localhost/product-user', {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useCreateIndex: true
