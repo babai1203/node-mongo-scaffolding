@@ -2,11 +2,11 @@
   "name": "product-app",
   "version": "1.0.0",
   "description": "Application backend for product",
-  "main": "main_app/app.js",
+  "main": "server/app.js",
   "scripts": {
-    "start": "babel-node main_app/app.js"
+    "start": "babel-node server/app.js"
   },
-  "author": "Souptik Chatterjee (souptik.chatterjee@gmail.com)",
+  "author": "Souptik Chatterjee (www.souptik.com)",
   "license": "ISC",
   "dependencies": {
     "@babel/cli": "^7.6.0",
