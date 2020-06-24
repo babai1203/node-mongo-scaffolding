@@ -9,7 +9,9 @@ import cors from 'cors';
 require('dotenv').config();
 
 mongoose.connect(connecString, {
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    useCreateIndex: true
 }).then(()=>{
     console.log("Product database connected successfully.");
     initializeDB();

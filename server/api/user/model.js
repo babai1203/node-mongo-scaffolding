@@ -16,9 +16,6 @@ var UserSchema = new mongoose.Schema({
     password: {
         type: String
     },
-    salt: {
-        type: String
-    },
     status: {
         type: String
     }
