@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 export function isLoggedin() {
-    return function(req,res, next){
+    return function(req,res,next){
         const token = req.header('token');
         if(!token){
             return res.status(401).send({ message: 'Access forbidden.' });
@@ -9,16 +9,16 @@ export function isLoggedin() {
         try {
             const user = jwt.verify(token,process.env.TOKEN_SECRET);
             req.user = user;
-            if(user.status != 'active') {
+            if(req.user.status != 'active') {
                 return res.status(403).send({ message: 'Access forbidden.' });
             }
-            next()
+            next();
         } catch(err){
+            console.log(err);
            return res.status(400).send({ message: 'Invalid session. Please login again.' });
         }
     }
 }
-
 
 export function hasRole(role) {
     if(!role) {
@@ -26,10 +26,22 @@ export function hasRole(role) {
     }
     return function(req,res,next){
         isLoggedin();
-        if(role == req.user.role) {
-            return next();
-        } else {
-            return res.status(403).send({ message: 'Access forbidden.' });
+        const token = req.header('token');
+        if(!token){
+            return res.status(401).send({ message: 'Access forbidden.' });
+        }
+        try {
+            const user = jwt.verify(token,process.env.TOKEN_SECRET);
+            req.user = user;
+            if(req.user.status == 'active' && role.includes(req.user.role)) {
+                next();
+            } else {
+                return res.status(401).send({ message: 'Access forbidden.' });
+            }
+            next();
+        } catch(err){
+            console.log(err);
+           return res.status(400).send({ message: 'Invalid session. Please login again.' });
         }
     }
 }

@@ -1,7 +1,9 @@
 module.exports = {
+    // environemnt key
+    env: 'dev',
     //token hashing secret string
     token: {
-        secret: 'sdasjndjnlkadnel'
+        secret: 'ltnsdomwehatnwbu'
     },
     // MongoDB connection options
     mongo: {
@@ -9,5 +11,7 @@ module.exports = {
         uri: 'mongodb://localhost/product'
     },
     // Seed database on startup
-    seedDB: true
+    seedDB: true,
+    // DB Migration scripts
+    migrateDB: true
 };

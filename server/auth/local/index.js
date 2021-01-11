@@ -6,7 +6,7 @@ import User from '../../api/user/model';
 import config from '../../config/environment';
 
 router.post("/", async (req, res) => {
-  var user = await User.findOne({ email: req.body.email });
+  var user = await User.findOne({ email: req.body.email }, { email: 1, password: 1, status: 1 });
   if (!user) {
     return res.status(404).send({ message: 'Email not registered with us.' });
   } else {

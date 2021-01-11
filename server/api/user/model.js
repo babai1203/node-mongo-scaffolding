@@ -1,20 +1,15 @@
 import mongoose, { Schema } from 'mongoose';
 
 var UserSchema = new mongoose.Schema({
-    name: {
-        type: String
-    },
-    mobile: {
-        type:  String
-    },
     email: {
-        type: String
-    },
-    role: {
         type: String
     },
     password: {
         type: String
+    },
+    role: {
+        type: String,
+        enum: ['customer','admin']
     },
     status: {
         type: String
